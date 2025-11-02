@@ -1,0 +1,306 @@
+/* =========================
+   Variables / paleta base
+   ========================= */
+:root{
+  --azul-oscuro: #090534;       /* fondo principal (ajustar si querés) */
+  --azul-medio:  #12103b;
+  --blanco:      #ffffff;
+  --crema:       #e9e5da;       /* tonos que aparecen en bocetos */
+  --dorado:      #d4b56f;
+  --text:        #f6f4fb;
+  --max-width:   1100px;
+  --gap:         24px;
+}
+
+/* =========================
+   Reset y base
+   ========================= */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+html {
+  scroll-behavior: smooth;
+}
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--azul-oscuro) 0%, var(--azul-medio) 60%);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+/* =========================
+   UTIL: contenedor central
+   ========================= */
+.container {
+  width: 92%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* =========================
+   HERO (portada)
+   ========================= */
+.hero{
+  padding: 64px 0 40px;
+  min-height: 58vh; /* ocupa buena parte de la pantalla inicial */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+/* Logo 2/5 */
+.logo-25{
+  width: 110px;
+  max-width: 18vw;
+  height: auto;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.35));
+}
+
+/* Título principal: tipografía elegante */
+.hero-title{
+  font-family: "Great Vibes", cursive; /* estilo caligráfico similar a los bocetos */
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  margin: 0 0 8px;
+  color: var(--blanco);
+  letter-spacing: 0.6px;
+}
+
+/* Subtítulo */
+.hero-sub{
+  font-size: clamp(.9rem, 1.2vw, 1.05rem);
+  color: var(--crema);
+  margin-bottom: 18px;
+}
+
+/* CTA redondeado (pill) */
+.cta{
+  display:inline-block;
+  background: var(--crema);
+  color: var(--azul-oscuro);
+  text-decoration:none;
+  padding: 12px 28px;
+  border-radius: 28px;
+  font-weight:600;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.cta:hover{ transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.35); }
+
+/* líneas decorativas al pie del hero (como en boceto) */
+.hero-stripes{
+  width:100%;
+  position:absolute;
+  bottom:8px;
+  left:0;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  align-items:center;
+}
+.hero-stripes span{
+  width: 90%;
+  max-width: var(--max-width);
+  height: 6px;
+  background: linear-gradient(90deg,var(--crema) 0%, var(--crema) 0%);
+  border-radius:4px;
+}
+.hero-stripes span:nth-child(2){ height:4px; width:86%; opacity:.9; }
+.hero-stripes span:nth-child(3){ height:2px; width:78%; opacity:.7; }
+
+/* =========================
+   SECCIÓN intro: ilustración + texto
+   ========================= */
+.section-intro{
+  padding: 64px 0;
+}
+.section-intro .container{
+  display:flex;
+  align-items:center;
+  gap: var(--gap);
+  flex-wrap:wrap;
+}
+.left-illustration{ flex:1 1 360px; }
+.left-illustration .illust{
+  width: 100%;
+  max-width: 520px;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+  border-radius: 10px;
+}
+.right-text{ flex:1 1 320px; padding-left:12px; }
+.section-title{
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin: 0 0 8px;
+  color: var(--crema);
+}
+.lead{ color: #ddd8d6; margin-bottom: 18px; line-height:1.6; }
+
+/* Pill decorativa */
+.pill{
+  display:inline-block;
+  background: var(--crema);
+  color: var(--azul-oscuro);
+  padding: 10px 22px;
+  border-radius: 28px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 8px 18px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   GRID de estudiantes
+   ========================= */
+.section-grid{ padding: 40px 0 24px; }
+.grid-wrap{
+  display:grid;
+  gap: 20px;
+  grid-template-columns: repeat(5, 1fr); /* desktop por defecto */
+  align-items:stretch;
+}
+
+/* Cada "student" es una tarjeta con foto de fondo */
+.student{
+  width:100%;
+  aspect-ratio: 4 / 5; /* mantiene proporción agradable */
+  background-color: #eee;
+  background-position: center;
+  background-size: cover;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .28s ease, box-shadow .28s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  border: 3px solid rgba(255,255,255,0.06);
+}
+
+/* ligero zoom al hover */
+.student:hover{
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+}
+
+/* Nombre que aparece al pasar el mouse: usamos pseudo-elemento */
+.student::after{
+  content: attr(data-name); /* toma el nombre desde HTML */
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%) translateY(12px);
+  background: linear-gradient(90deg, rgba(0,0,0,0.65), rgba(0,0,0,0.45));
+  color: var(--crema);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight:600;
+  font-size: 0.95rem;
+  opacity: 0;
+  transition: opacity .24s ease, transform .24s ease;
+  pointer-events: none;
+}
+
+/* mostrar el nombre al hover */
+.student:hover::after{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* leyenda centrada bajo la grilla */
+.grid-caption{ text-align:center; color:#cfcad0; margin-top:12px; font-size:0.95rem; }
+
+/* =========================
+   ABOUT / EXPLICACIÓN
+   ========================= */
+.section-about{ background: var(--crema); color: var(--azul-oscuro); padding: 48px 0; }
+.about-inner{ display:flex; gap: var(--gap); align-items:center; flex-wrap:wrap; }
+.about-left{ flex:1 1 540px; padding-right:12px; }
+.about-left h3{ font-family: "Great Vibes", cursive; font-size: 2rem; margin:0 0 12px; }
+.about-right{ flex:0 1 280px; text-align:center; }
+.cards-visual{ max-width:220px; width:80%; }
+
+/* =========================
+   FOOTER
+   ========================= */
+.site-footer{ background: rgba(4,3,20,0.95); color: #ddd; padding: 28px 0 40px; margin-top:32px; }
+.footer-inner{ display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap; }
+.footer-left p{ margin:0 0 8px; font-weight:600; }
+.socials a img{ width:36px; height:36px; display:inline-block; vertical-align:middle; filter: none; transition: transform .2s ease; }
+.socials a:hover img{ transform: scale(1.15); }
+
+/* créditos */
+.credits{ opacity:.9; font-size:.95rem; }
+
+/* ===================== PROFES ===================== */
+.section-profes {
+  background: #fff;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.section-profes h2 {
+  color: var(--azul-medio);
+  margin-bottom: 40px;
+}
+
+.profes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.profe {
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profe:hover {
+  transform: translateY(-5px);
+}
+
+
+.profe h3 {
+  color: var(--azul-oscuro);
+  margin-bottom: 10px;
+}
+
+.profe p {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+
+
+/* =========================
+   RESPONSIVE: ajustes importantes
+   ========================= */
+@media (max-width: 1100px){
+  .grid-wrap{ grid-template-columns: repeat(4, 1fr); }
+  .left-illustration .illust{ max-width: 420px; }
+}
+@media (max-width: 900px){
+  .grid-wrap{ grid-template-columns: repeat(3, 1fr); }
+  .about-inner{ flex-direction:column-reverse; text-align:center; }
+  .hero{ padding-top: 48px; padding-bottom: 24px; }
+  .hero-stripes{ display:none; } /* menos elementos en pantallas chicas */
+}
+@media (max-width: 600px){
+  .grid-wrap{ grid-template-columns: repeat(2, 1fr); gap:14px; }
+  .logo-25{ width:90px; }
+  .cta{ padding:10px 18px; }
+  .hero-title{ font-size:1.8rem; }
+  .left-illustration{ order:2; }
+  .right-text{ order:1; }
+}
+@media (max-width: 420px){
+  .grid-wrap{ grid-template-columns: 1fr 1fr; }
+  .student{ aspect-ratio: 3 / 4; }
+  .hero{ min-height:48vh; }
+}
